@@ -1,0 +1,64 @@
+# Permite accesul PWABuilder si crawlerilor legitimi
+<IfModule mod_setenvif.c>
+  SetEnvIfNoCase User-Agent "PWABuilder" allow_bot
+  SetEnvIfNoCase User-Agent "Googlebot" allow_bot
+  SetEnvIfNoCase User-Agent "Chrome" allow_bot
+  SetEnvIfNoCase User-Agent "Mozilla" allow_bot
+</IfModule>
+
+# Nu bloca accesul la iconite si resurse PWA
+<FilesMatch "\.(png|ico|json|js|webmanifest)$">
+  <IfModule mod_rewrite.c>
+    RewriteEngine Off
+  </IfModule>
+  Order allow,deny
+  Allow from all
+  Satisfy Any
+</FilesMatch>
+
+# Coduri MedRO — Apache config pentru InfinityFree
+# ============================================================
+
+# MIME types corecte pentru PWA
+AddType application/manifest+json .webmanifest
+AddType application/json .json
+AddType application/javascript .js
+AddType image/png .png
+AddType image/x-icon .ico
+
+# Permite accesul la .well-known (necesar pentru assetlinks.json)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Permite accesul direct la .well-known
+  RewriteRule ^.well-known/ - [L]
+
+  # Permite accesul direct la fișierele existente
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Toate celelalte → index.html (SPA fallback)
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Cache — iconite si resurse statice
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/manifest+json "access plus 0 seconds"
+</IfModule>
+
+# Compresia Gzip (daca e disponibila)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
+
+# Blocheaza accesul la fisierele de configurare
+<FilesMatch "^(netlify\.toml|vercel\.json|\.htaccess)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
