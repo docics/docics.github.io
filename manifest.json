@@ -4,8 +4,8 @@
   "description": "Coduri MedRO — aplicație de referință pentru codificarea medicală în România. Căutare rapidă în 19.547 coduri ICD-10 și nomenclatorul de proceduri. Corespondență oficială ICD-10 ↔ Codificarea 999 conform MS România. Funcționează complet offline după prima instalare.",
   "lang": "ro",
   "dir": "ltr",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "display_override": [
     "window-controls-overlay",
@@ -116,7 +116,7 @@
       "name": "Caută ICD-10",
       "short_name": "ICD-10",
       "description": "Caută direct în codurile ICD-10",
-      "url": "/?tab=icd",
+      "url": "./?tab=icd",
       "icons": [
         {
           "src": "icons/icon-96.png",
@@ -128,7 +128,7 @@
       "name": "Caută Proceduri",
       "short_name": "Proceduri",
       "description": "Caută în nomenclatorul de proceduri",
-      "url": "/?tab=proc",
+      "url": "./?tab=proc",
       "icons": [
         {
           "src": "icons/icon-96.png",
