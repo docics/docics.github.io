@@ -37,7 +37,6 @@
 <meta name="msapplication-TileColor" content="#0a1628">
 <meta name="msapplication-config" content="browserconfig.xml">
 <title>Coduri MedRO — ICD-10 &amp; Proceduri</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
 /* === DARK THEME (default) === */
 :root{
@@ -46,7 +45,7 @@
   --accent:#00d4ff;--accent3:#7c3aed;
   --text:#e8f4fd;--text2:#8baec8;--text3:#4a7096;
   --icd:#00d4ff;--proc:#ff6b35;--new:#22c55e;--corr:#f59e0b;
-  --r:12px;--mono:'Space Mono',monospace;--body:'DM Sans',sans-serif;
+  --r:12px;--mono:ui-monospace,'Cascadia Code','SF Mono','Segoe UI Mono','Liberation Mono',monospace;--body:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
   /* semantic alpha tokens */
   --a-icd-bg:rgba(0,212,255,.12);
   --a-icd-br:rgba(0,212,255,.25);
@@ -122,7 +121,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body,header,#sb,#ds,#rl,.ri,.dlc,.corr-block{transition:background .2s,color .2s,border-color .2s}
-html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--body);font-size:var(--fs,15px)}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--body);font-size:var(--fs,16px)}
 #app{display:flex;flex-direction:column;height:100dvh;max-width:100%;margin:0 auto}
 
 header{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 14px 0;flex-shrink:0;z-index:10}
@@ -142,6 +141,38 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 
 .disc-donate-title{font-size:0.867rem;font-weight:700;color:var(--text);margin-bottom:2px}
 .disc-donate-sub{font-size:0.733rem;color:var(--text3)}
 .disc-donate-btn{background:linear-gradient(135deg,#6436ff,#00d4ff);color:#fff;border:none;padding:7px 14px;border-radius:20px;font-family:var(--mono);font-size:0.667rem;font-weight:700;cursor:pointer;white-space:nowrap;letter-spacing:.5px}
+
+
+#updateBanner{position:fixed;bottom:env(safe-area-inset-bottom,0);left:0;right:0;z-index:150;
+  background:linear-gradient(135deg,var(--accent3),var(--accent));
+  padding:10px 16px;display:none;align-items:center;gap:10px;
+  max-width:600px;margin:0 auto;box-shadow:0 -2px 16px rgba(0,0,0,.3)}
+#updateBanner.visible{display:flex}
+.upd-text{flex:1;font-size:0.8rem;color:#fff;font-weight:500}
+.upd-btn{background:#fff;color:var(--accent3);border:none;padding:6px 14px;
+  border-radius:20px;font-family:var(--mono);font-size:0.733rem;font-weight:700;cursor:pointer;white-space:nowrap}
+.upd-dismiss{background:none;border:none;color:rgba(255,255,255,.7);font-size:18px;cursor:pointer;padding:0 4px}
+
+
+/* Donate modal */
+#donateModal{position:fixed;inset:0;z-index:200;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);backdrop-filter:blur(3px)}
+#donateModal.open{display:flex}
+.don-sheet{background:var(--bg2);border-radius:18px 18px 0 0;max-width:600px;width:100%;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 -4px 32px rgba(0,0,0,.4)}
+.don-header{padding:16px 18px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.don-title{font-family:var(--mono);font-size:0.8rem;font-weight:700;color:var(--text);letter-spacing:.5px}
+.don-close{background:var(--surface);border:none;color:var(--text2);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.don-body{padding:18px}
+.don-msg{font-size:0.867rem;color:var(--text2);line-height:1.6;margin-bottom:18px;text-align:center}
+.don-btns{display:flex;gap:10px;justify-content:center;margin-bottom:6px}
+.don-btn{flex:1;max-width:120px;background:linear-gradient(135deg,#6436ff,#00d4ff);color:#fff;border:none;padding:12px 8px;border-radius:var(--r);font-family:var(--mono);font-size:0.867rem;font-weight:700;cursor:pointer;transition:opacity .15s;display:flex;flex-direction:column;align-items:center;gap:3px}
+.don-btn:active{opacity:.8}
+.don-btn-sub{font-size:0.6rem;opacity:.8;letter-spacing:.5px;font-weight:400}
+
+/* Home screen footer */
+.home-footer{margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.home-copyright{font-size:0.667rem;color:var(--text3);font-family:var(--mono)}
+.home-donate-btn{background:none;border:1px solid var(--border);color:var(--text3);padding:6px 18px;border-radius:20px;font-size:0.733rem;cursor:pointer;transition:all .2s;font-family:var(--body)}
+.home-donate-btn:active,.home-donate-btn:hover{border-color:var(--accent);color:var(--accent)}
 
 .info-btn{background:none;border:1px solid var(--border);color:var(--text3);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;transition:background .2s,color .2s}
 .info-btn:active,.info-btn:hover{background:var(--surface);color:var(--text2)}
@@ -273,7 +304,6 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 
         <div class="logo-text">Coduri MedRO</div>
         <div class="logo-sub">ICD-10 &middot; Proceduri &middot; România</div>
       </div>
-      <div class="ver-badge">Barbu Octavian 2026</div>
       <div class="zoom-btns" title="Mărime text">
         <button class="zoom-btn" id="zoomOut" onclick="zoom(-1)" aria-label="Text mai mic">A−</button>
         <span id="zoomVal">100%</span>
@@ -712,7 +742,12 @@ function home(){
     <div class="ss">
       <div class="si2" style="font-size:56px">🔬</div>
       <div class="st">Caută coduri medicale</div>
-      <div class="su">ICD-10 · Codificarea 999 · Corespondențe bidirecționale<br>Introdu cod sau denumire în câmpul de sus</div>
+      <div class="su">ICD-10 · Codificarea 999 · Corespondențe bidirecționale</div>
+      <div class="su" style="margin-top:4px;opacity:.7">Introdu cod sau denumire în câmpul de sus</div>
+      <div class="home-footer">
+        <span class="home-copyright">© Barbu Octavian 2026</span>
+        <button class="home-donate-btn" onclick="openDonateModal()">☕ Donează</button>
+      </div>
     </div>`;
 }
 
@@ -752,8 +787,40 @@ document.getElementById('instB').onclick=async()=>{
 
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('./service-worker.js', {scope:'./'})
-    .then(r => { console.log('SW registered, scope:', r.scope); })
-    .catch(e => { console.warn('SW registration failed:', e); });
+    .then(reg => {
+      // Check for updates on focus
+      document.addEventListener('visibilitychange', () => {
+        if(document.visibilityState === 'visible') reg.update();
+      });
+      // New SW waiting — show banner
+      if(reg.waiting) showUpdateBanner();
+      reg.addEventListener('updatefound', () => {
+        const newSW = reg.installing;
+        newSW.addEventListener('statechange', () => {
+          if(newSW.state === 'installed' && navigator.serviceWorker.controller)
+            showUpdateBanner();
+        });
+      });
+    })
+    .catch(e => console.warn('SW failed:', e));
+
+  // SW sends message when activated
+  navigator.serviceWorker.addEventListener('message', e => {
+    if(e.data && e.data.type === 'SW_UPDATED') showUpdateBanner();
+  });
+}
+
+function showUpdateBanner(){
+  document.getElementById('updateBanner').classList.add('visible');
+}
+
+function doUpdate(){
+  navigator.serviceWorker.getRegistration().then(reg => {
+    if(reg && reg.waiting){
+      reg.waiting.postMessage({type:'SKIP_WAITING'});
+    }
+    window.location.reload();
+  });
 }
 
 
@@ -806,8 +873,8 @@ function toggleTheme(){
 // ============================================================
 // ZOOM (font size)
 // ============================================================
-const ZOOM_SIZES = [11, 13, 15, 17, 20]; // px steps
-const ZOOM_LABELS = ['73%','87%','100%','113%','133%'];
+const ZOOM_SIZES = [12, 14, 16, 18, 21]; // px steps
+const ZOOM_LABELS = ['76%','88%','100%','112%','129%'];
 let zoomIdx = 2; // default = 15px = 100%
 
 function applyZoom(idx) {
@@ -850,8 +917,87 @@ window.addEventListener('popstate', e => {
   if(m && m.classList.contains('open')) closeDisclaimer();
 });
 
+// ============================================================
+// DONATE MODAL
+// ============================================================
+function openDonateModal(){
+  const m = document.getElementById('donateModal');
+  m.style.display = 'flex';
+  requestAnimationFrame(() => m.classList.add('open'));
+  history.pushState({donate:true}, '');
+}
+function closeDonateModal(){
+  const m = document.getElementById('donateModal');
+  m.classList.remove('open');
+  setTimeout(() => m.style.display = 'none', 200);
+}
+function openRevolutAmount(amount){
+  const note = 'Dona%C8%9Bie%20CodMedRo';
+  const url = 'https://revolut.me/octavi8dt?currency=RON&amount=' + amount + '&note=' + note;
+  const intentUrl = 'intent://octavi8dt?currency=RON&amount=' + amount + '&note=' + note +
+    '#Intent;scheme=revolut;package=com.revolut.revolut;S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+  const isAndroid = /android/i.test(navigator.userAgent);
+  closeDonateModal();
+  setTimeout(() => {
+    if(isAndroid){
+      window.location.href = intentUrl;
+      setTimeout(() => window.open(url, '_blank'), 1500);
+    } else {
+      window.open(url, '_blank');
+    }
+  }, 250);
+}
+
+
+function openRevolut(){
+  const url = 'https://revolut.me/octavi8dt?currency=RON&amount=500&note=Dona%C8%9Bie%20CodMedRo';
+  // Android intent scheme — opens Revolut app directly without TWA dialog
+  const intentUrl = 'intent://octavi8dt?currency=RON&amount=500&note=Dona%C8%9Bie%20CodMedRo#Intent;scheme=revolut;package=com.revolut.revolut;S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+  
+  const isAndroid = /android/i.test(navigator.userAgent);
+  if(isAndroid){
+    // Try intent:// first — opens Revolut app directly
+    window.location.href = intentUrl;
+    // Fallback to https after 1.5s if Revolut not installed
+    setTimeout(() => { window.open(url, '_blank'); }, 1500);
+  } else {
+    window.open(url, '_blank');
+  }
+}
+
 load();
 </script>
+
+
+<!-- DONATE MODAL -->
+<div id="donateModal" onclick="if(event.target===this)closeDonateModal()">
+  <div class="don-sheet">
+    <div class="don-header">
+      <span class="don-title">☕ SUSȚINE APLICAȚIA</span>
+      <button class="don-close" onclick="closeDonateModal()">✕</button>
+    </div>
+    <div class="don-body">
+      <div class="don-msg">
+        Coduri MedRO e gratuit și fără reclame.<br>
+        O donație simbolică ajută la menținerea și dezvoltarea aplicației.
+      </div>
+      <div class="don-btns">
+        <button class="don-btn" onclick="openRevolutAmount(500)">
+          5 RON
+          <span class="don-btn-sub">prin Revolut</span>
+        </button>
+        <button class="don-btn" onclick="openRevolutAmount(1000)">
+          10 RON
+          <span class="don-btn-sub">prin Revolut</span>
+        </button>
+        <button class="don-btn" onclick="openRevolutAmount(1500)">
+          15 RON
+          <span class="don-btn-sub">prin Revolut</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- DISCLAIMER MODAL -->
 <div id="disclaimerModal" onclick="if(event.target===this)closeDisclaimer()">
@@ -919,15 +1065,23 @@ load();
     </div>
     
       <div style="text-align:center;padding:4px 0 16px">
-        <a href="https://revolut.me/octavi8dt" target="_blank" rel="noopener"
-           style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#6436ff,#00d4ff);color:#fff;padding:10px 24px;border-radius:24px;font-family:var(--mono);font-size:0.733rem;font-weight:700;text-decoration:none;letter-spacing:.5px">
+        <button onclick="openRevolut()" 
+           style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#6436ff,#00d4ff);color:#fff;padding:10px 24px;border-radius:24px;font-family:var(--mono);font-size:0.733rem;font-weight:700;text-decoration:none;letter-spacing:.5px;border:none;cursor:pointer">
           ☕ Susține aplicația · Revolut
-        </a>
+        </button>
       </div>
 <div class="disc-footer">
       <button class="disc-accept" onclick="closeDisclaimer()">Am înțeles</button>
     </div>
   </div>
+</div>
+
+
+<!-- UPDATE BANNER -->
+<div id="updateBanner">
+  <span class="upd-text">✨ Versiune nouă disponibilă</span>
+  <button class="upd-btn" onclick="doUpdate()">Actualizează</button>
+  <button class="upd-dismiss" onclick="document.getElementById('updateBanner').classList.remove('visible')">×</button>
 </div>
 
 </body>
