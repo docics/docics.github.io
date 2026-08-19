@@ -1,0 +1,39 @@
+CODURI MEDRO — LICENȚE ȘI ATRIBUIRI
+=====================================
+Autor: Barbu Octavian, 2026
+Aplicație: Coduri MedRO — ICD-10 & Proceduri medicale România
+
+COMPONENTE TERȚE
+----------------
+
+Microsoft Fluent UI Emoji (iconița stetoscop)
+  Licență: MIT License
+  Copyright (c) Microsoft Corporation
+  Sursă: https://github.com/microsoft/fluentui-emoji
+  Permisiuni: utilizare comercială, modificare, distribuție
+
+Google Fonts — Space Mono & DM Sans
+  Licență: SIL Open Font License 1.1
+  Sursă: https://fonts.google.com
+  Permisiuni: utilizare comercială nerestricționată
+
+DATE MEDICALE
+-------------
+
+Coduri ICD-10 (denumiri în limba română)
+  Sursă: Ministerul Sănătății România / CNAS
+  Date publice administrative
+
+Corespondență ICD-10 ↔ Codificarea 999
+  Sursă: Dr. Petru Mureșan — „Reglementările privind clasificarea
+  și codificarea cauzelor de boală și deces", Revizia a 10-a OMS,
+  Editura Medicală, București, 2001
+  Ministerul Sănătății și Familiei, Centrul de Calcul,
+  Statistică Sanitară și Documentare Medicală
+
+DISCLAIMER
+----------
+Această aplicație are scop informativ și de referință profesională.
+Nu înlocuiește decizia clinică a medicului.
+Codurile medicale trebuie verificate întotdeauna cu nomenclatoarele
+oficiale în vigoare ale MS România și CNAS.
