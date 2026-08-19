@@ -1,0 +1,6 @@
+# Permite accesul public la assetlinks.json
+Order allow,deny
+Allow from all
+
+# MIME type corect
+AddType application/json .json
