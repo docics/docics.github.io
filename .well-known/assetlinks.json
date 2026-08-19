@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "ro.codmedro.app",
+        "sha256_cert_fingerprints": ["14:0B:60:E6:D3:4F:7F:75:97:B1:4E:31:FE:A8:03:88:2A:04:1D:B8:7A:63:1C:73:38:61:D7:12:2F:21:88:76"]
+      }
+    }]
