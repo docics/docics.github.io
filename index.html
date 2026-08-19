@@ -29,7 +29,7 @@
 <link rel="apple-touch-startup-image" href="splash/splash-ipad-pro-11.png" media="(min-device-width:834px) and (max-device-width:1194px)">
 <link rel="apple-touch-startup-image" href="splash/splash-ipad-pro-12.9.png" media="(min-device-width:1024px) and (max-device-width:1366px)">
 <!-- Manifest PWA — CRITICAL pentru PWABuilder -->
-<link rel="manifest" href="/manifest.json?i=1">
+<link rel="manifest" href="manifest.json">
 <!-- Favicon & Windows -->
 <link rel="icon" type="image/png" sizes="96x96" href="icons/icon-96.png">
 <link rel="shortcut icon" href="icons/icon-48.png">
@@ -742,7 +742,7 @@ document.getElementById('instB').onclick=async()=>{
 };
 
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/service-worker.js', {scope:'/'})
+  navigator.serviceWorker.register('./service-worker.js', {scope:'./'})
     .then(r => { console.log('SW registered, scope:', r.scope); })
     .catch(e => { console.warn('SW registration failed:', e); });
 }
